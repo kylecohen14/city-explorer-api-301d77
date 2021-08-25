@@ -1,0 +1,25 @@
+{
+  "name": "city-explorer-api-301d77",
+  "version": "1.0.0",
+  "description": "api for city explore",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylecohen14/city-explorer-api-301d77.git"
+  },
+  "author": "Kyle Cohen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylecohen14/city-explorer-api-301d77/issues"
+  },
+  "homepage": "https://github.com/kylecohen14/city-explorer-api-301d77#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
