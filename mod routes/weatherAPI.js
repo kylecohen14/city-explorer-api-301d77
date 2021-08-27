@@ -1,27 +1,36 @@
-// 'use strict';
+const axios = require('axios');
+const { notFoundHandler } = require('./notFoundHandler');
 
-// const axios = require('axios');
 
-// async function getAPIWeather(req, res) {
-//   console.log(req.query);
-//   const lat = req.query.lat;
-//   const lon =req.query.lon;
-//   const searchQuery = req.query.searchQuery;
-//   const weatherAPIdata = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.REACT_APP_WEATHER_API}&city=${searchQuery}&lat=${lat}&lon=${lon}`;
-//   // const cityObject = weatherData.find (city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
-//   // const cityObject = weatherAPIdata.find (city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
-//   try{
-//     const apiforecast = axios.get(weatherAPIdata);
-//     let apiforecastArray = [];
-//     apiforecast.data.data.map( (value, idx) => {
-//       apiforecastArray.push(new Forecast(value.datetime, `Avg temp of ${value.temp}, and ${value.weather.description}`));
-//     });
-//     res.status(200).send(apiforecastArray);
-//     // const forecast = cityObject.data.map(day => new Forecast(day));
-//     // res.send(forecast);
-//   }catch(error){
-//     console.log(error);
-//     notFoundHandler();
-//   }
+async function getWeather(req, res) {
+  console.log(req.query);
+  const lat = req.query.lat;
+  const lon =req.query.lon;
+  const searchQuery = req.query.searchQuery;
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.REACT_APP_WEATHER_API}&city=${searchQuery}&days=5`;
+  // &lat=${lat}&lon=${lon}
+  try{
+    const response = await axios.get(url);
+    console.log(response);
+    const APIforecastArray = response.data.data.map(day => new Forecast(day));
+    res.send(APIforecastArray);
+    // const forecast = cityObject.data.map(day => new Forecast(day));
+    // res.send(forecast);
+  }catch(error){
+    console.log(error);
+    notFoundHandler();
+  }
 
-// }
+}
+
+class Forecast {
+  constructor(day) {
+    this.date = day.valid_date;
+    this.description = day.weather.description;
+    this.low_temp = day.low_temp;
+    this.max_temp = day.max_temp;
+  }
+}
+module.exports = {
+  getWeather: getWeather
+}
