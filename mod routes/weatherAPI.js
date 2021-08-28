@@ -3,7 +3,7 @@ const { notFoundHandler } = require('./notFoundHandler');
 
 
 async function getWeather(req, res) {
-  console.log(req.query);
+  // console.log(req.query);
   const lat = req.query.lat;
   const lon =req.query.lon;
   const searchQuery = req.query.searchQuery;
@@ -11,7 +11,7 @@ async function getWeather(req, res) {
   // &lat=${lat}&lon=${lon}
   try{
     const response = await axios.get(url);
-    console.log(response);
+    // console.log(response);
     const APIforecastArray = response.data.data.map(day => new Forecast(day));
     res.send(APIforecastArray);
     // const forecast = cityObject.data.map(day => new Forecast(day));

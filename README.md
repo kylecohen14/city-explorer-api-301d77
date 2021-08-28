@@ -21,12 +21,12 @@ make repo, config repo and clone down,
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Name of feature: ________________________________
+Name of feature: _________City Explorer Server_lab10___________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _2hr__
 
-Start time: _____
+Start time: _7pm__
 
-Finish time: _____
+Finish time: _9pm__
 
-Actual time needed to complete: _____
+Actual time needed to complete: _2hr__
